@@ -6,10 +6,12 @@
     <link type="text/css" rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-<?php include '../mysqli_connect.php' ?>
 <div>
     <center>
-        <?php getFilms(); ?>
+        <h2>Browse Films</h2>
+        <?php
+        getFilms();
+        ?>
     </center>
 </div>
 
