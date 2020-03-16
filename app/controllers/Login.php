@@ -1,5 +1,7 @@
 <?php
 
-include '../mysqli_connect.php';
 
+class Login
+{
 
+}
