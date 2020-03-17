@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Film Information</title>
 </head>
-<a>
+
+<body>
 
 <?php
 include '../mysqli_connect.php';
 
 $filmid = $_GET['filmid'];
 
-$sql = 'SELECT * FROM `fss_Film` INNER JOIN `fss_Rating` ON fss_Film.ratid = fss_Rating.ratid WHERE filmid=' . $filmid;
+$sql = 'SELECT * FROM `fss_Film` INNER JOIN `fss_Rating` ON `fss_Film`.ratid = `fss_Rating`.ratid WHERE filmid=' . $filmid;
 $result = $dbc->query($sql);
 
 if ($result->num_rows > 0) {
@@ -23,15 +24,12 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 
-include '../controllers/Basket.php';
-
 ?>
 
 <p><a href="javascript:history.go(-1)" title="Return to previous page">&laquo; Go back</a></p>
 
-<a onclick="">Submit</a>
+<a href="../controllers/Basket.php?filmid=<?php echo $filmid?>">Add to Basket</a>
 
 </center>
-
 </body>
 </html>

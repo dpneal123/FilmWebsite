@@ -1,28 +1,38 @@
 <?php
 
+$array = new ArrayObject();
 
 class Basket
 {
-    function getArray() {
-        return array();
+    function __construct()
+    {
+        echo "<p>made array</p><br>";
+        $this->addToArray(intval($_GET['filmid']));
     }
 
-    function add() {
-        $filmid = $_POST['filmid'];
-        if ($filmid != null) {
-            $basketid = 0;
-            while ($this->getArray()[$basketid] != null) {
-                $basketid++;
-            }
-            echo "success";
+    function getArray()
+    {
+        return $GLOBALS['array'];
+    }
+
+    function addToArray($filmid)
+    {
+        if ($this->getArray()[0] == null) {
+            $this->getArray()[0] = $filmid;
         }
         else {
-            echo "error";
+            $x = 1;
+            while ($this->getArray()[$x] != null) {
+                $x++;
+            }
+
+            $this->getArray()[$x] = $filmid;
         }
+        echo "success";
     }
-
-    function remove() {
-
-    }
-
 }
+
+$basket = new Basket();
+
+header('Location: ' . $_SERVER['HTTP_REFERER']);
+
